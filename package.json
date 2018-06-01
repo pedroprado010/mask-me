@@ -1,0 +1,44 @@
+{
+  "name": "mask-me",
+  "version": "0.1.0",
+  "description": "Framework neutral mask functions",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "jest --watch --verbose",
+    "lint": "npx standard --fix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pedroprado010/mask-me.git"
+  },
+  "keywords": [
+    "mask",
+    "masks"
+  ],
+  "author": "plcsp",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pedroprado010/mask-me/issues"
+  },
+  "homepage": "https://github.com/pedroprado010/mask-me#readme",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-eslint": "^8.2.3",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-flow": "^6.23.0",
+    "babel-preset-stage-0": "^6.24.1",
+    "eslint-plugin-flowtype": "^2.48.0",
+    "flow-bin": "^0.73.0",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^7.0.1",
+    "gulp-jsmin": "^0.1.5",
+    "jest": "^23.0.1",
+    "standard": "^11.0.1"
+  },
+  "standard": {
+    "parser": "babel-eslint",
+    "plugins": [
+      "flowtype"
+    ]
+  }
+}
