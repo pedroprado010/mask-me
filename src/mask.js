@@ -8,11 +8,11 @@
  * # - Loop it!
  */
 type Options = {
-  direction: string
+  startAt: string
 }
 
 const defaultOptions :Options = {
-  direction: 'left',
+  startAt: 'left',
 }
 
 const mask = (mask :string, options :Options = defaultOptions) => {
@@ -26,35 +26,58 @@ const mask = (mask :string, options :Options = defaultOptions) => {
   const maskChars = /[#90AS]/
 
   return (input :string) :string => {
-    let maskIndex = 0
-
-    for (let i = 0; i < input.length && mask.length > maskIndex; ++i) {
+    let maskIndex :number = 0
+    let i :number
+    let loopStart :number = -1
+    for (i = 0; i < input.length; ++i) {
       // Is at a test case?
       if (maskChars.test(mask[maskIndex])) {
-        // Should erase char ?
+        // If char do not pass the test, then ...
         if (!testCases[mask[maskIndex]].test(input[i])) {
           if (mask[maskIndex] !== '9') {
-            // If not an optional case, remove in
+            // If not an optional case, erase it.
+            // Special chars should be escaped first.
             input = input.replace(RegExp(input[i]
               .replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&")),
               ''
             )
           } else {
-            // Jumping optional cases
+            // If optional case then jump all next optional cases
             while (mask[maskIndex] === '9') { maskIndex++ }
-
           }
-          // will redo last test so indexes should be at its correct position
+          // Will redo last test so indexes should be at its correct position
+          // decrease both indexes by 1.
           -- i
           -- maskIndex
+        } else if (mask[maskIndex] === '#' && loopStart === -1) {
+          // If test passes and is at an loop case, mark position and start
+          // again from it when mask reaches last char.
+          loopStart = maskIndex
         }
       } else if (input[i] !== mask[maskIndex]) {
         // If not a test case include char at position
         input = input.substring(0, i) + mask[maskIndex] + input.substring(i)
       }
       ++ maskIndex
-      console.log(mask,mask[maskIndex],maskIndex,input[i],i,input)
+      if (!(maskIndex < mask.length)) {
+        if (loopStart !== -1) {
+          // If at end of mask but have a loop char, set maskIndex to restart from
+          // the loop position.
+          maskIndex = loopStart
+        } else {
+          // If not, then stop masking and discard unnecessary chars
+          break
+        }
+      }
     }
+
+    // Check for extra chars, then remove if necessary.
+    if (i >= input.length) {
+      input = input.substring(0,i)
+    }
+
+    // Check if next char at input is a mask constant (not a test case)
+    // then add it to the end of the string.
     -- maskIndex
     if (mask[maskIndex]
       && !maskChars.test(mask[maskIndex])

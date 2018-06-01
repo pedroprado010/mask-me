@@ -5,7 +5,8 @@
   "main": "dist/index.js",
   "scripts": {
     "test": "jest --watch --verbose",
-    "lint": "npx standard --fix"
+    "lint": "npx standard --fix",
+    "transpile": "npx gulp transpile"
   },
   "repository": {
     "type": "git",
