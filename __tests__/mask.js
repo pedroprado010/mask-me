@@ -49,5 +49,10 @@ test('date/ip mask', () => {
 
 test('money mask', () => {
   const myMask = mask('#.##0,00', {startAt: 'right'})
-  expect(myMask('11133344455')).toMatch('111.333.444,55')
+  expect(myMask('00011133344455')).toMatch('000.111.333.444,55')
+})
+
+test('random mask', () => {
+  const myMask = mask('##.#.#.',{startAt:'right'})
+  expect(myMask('00000000')).toMatch('00.0.000.0.0.')
 })

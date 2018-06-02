@@ -9,6 +9,7 @@ declare module 'mask-types'{
     goNext: Function,
     goBack: Function,
     extraChars: Function,
-    updateEndInput: Function
+    updateEndInput: Function,
+    putCharAt: Function
   }
 }

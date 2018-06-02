@@ -32,7 +32,8 @@ const mask = (mask :string, options :Options = defaultOptions) => {
       goNext,
       goBack,
       extraChars,
-      updateEndInput
+      updateEndInput,
+      putCharAt
     } = config
     let i :number
     let endInput: number
@@ -77,7 +78,9 @@ const mask = (mask :string, options :Options = defaultOptions) => {
         }
       } else if (input[i] !== mask[maskIndex]) {
         // If not a test case include char at position
-        input = input.substring(0, i) + mask[maskIndex] + input.substring(i)
+        input = putCharAt(input, i, mask[maskIndex])
+        if (options.startAt === 'right') i = goBack(i)
+        // input = input.substring(0, i) + mask[maskIndex] + input.substring(i)
         endInput = updateEndInput(input)
       }
       maskIndex = goNext(maskIndex)

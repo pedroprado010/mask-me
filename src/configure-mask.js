@@ -2,7 +2,7 @@
 import type { Options, Config } from 'mask-types'
 
 function configureMask(mask :string, options :Options) :Config {
-  let maskIndex, endMask, goNext, goBack, extraChars, updateEndInput
+  let maskIndex, endMask, goNext, goBack, extraChars, updateEndInput, putCharAt
   switch (options.startAt) {
     case 'right': {
       maskIndex = mask.length - 1
@@ -11,6 +11,9 @@ function configureMask(mask :string, options :Options) :Config {
       goBack = (pos :number) :number => pos + 1
       extraChars = (endInput :number, pos: number) :bool => endInput <= pos
       updateEndInput = (input :string) => 0
+      putCharAt = (input :string, pos :number, char :string) => {
+        return  input.substring(0, pos + 1) + char + input.substring(pos + 1)
+      }
       break
     }
     case 'left': {
@@ -20,6 +23,9 @@ function configureMask(mask :string, options :Options) :Config {
       goBack = (pos :number) :number => pos - 1
       extraChars = (endInput :number, pos: number) :bool => endInput > pos
       updateEndInput = (input :string) => input.length
+      putCharAt = (input :string, pos :number, char :string) => {
+        return  input.substring(0, pos) + char + input.substring(pos)
+      }
       break
     }
     default: {
@@ -32,7 +38,8 @@ function configureMask(mask :string, options :Options) :Config {
     goNext,
     goBack,
     extraChars,
-    updateEndInput
+    updateEndInput,
+    putCharAt
   }
   return __config__
 }
