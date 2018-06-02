@@ -30,6 +30,7 @@
     "babel-preset-stage-0": "^6.24.1",
     "eslint-plugin-flowtype": "^2.48.0",
     "flow-bin": "^0.73.0",
+    "flow-typed": "^2.4.0",
     "gulp": "^3.9.1",
     "gulp-babel": "^7.0.1",
     "gulp-jsmin": "^0.1.5",

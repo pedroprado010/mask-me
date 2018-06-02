@@ -39,7 +39,15 @@ test('ip mask', () => {
   expect(myMask('1921680 102330')).toMatch(/192\.168\.0\.102/) //192.168.0.102
 })
 
+test('date/ip mask', () => {
+  const myMask = mask('00/00/0000')
+  const myMask2 = mask('099.099.099.099')
+  expect(myMask('12345678')).toMatch(/^12\/34\/5678$/)
+  expect(myMask2('1921680 102330')).toMatch(/^192\.168\.0\.102$/) //192.168.0.102
+})
+
+
 test('money mask', () => {
-  const myMask = mask('#.##0,00')
+  const myMask = mask('#.##0,00', {startAt: 'right'})
   expect(myMask('11133344455')).toMatch('111.333.444,55')
 })
