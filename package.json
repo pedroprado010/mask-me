@@ -15,7 +15,9 @@
   },
   "keywords": [
     "mask",
-    "masks"
+    "masks",
+    "input",
+    "input masking"
   ],
   "author": "plcsp",
   "license": "MIT",
