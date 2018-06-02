@@ -23,7 +23,7 @@ const defaultOptions :Options = {
   startAt: 'left'
 }
 
-const mask = (mask :string, options :Options = defaultOptions) => {
+const MaskMe = (mask :string, options :Options = defaultOptions) => {
   const config :Config = configureMask(mask, options)
   return (input :string) :string => {
     let {
@@ -79,7 +79,7 @@ const mask = (mask :string, options :Options = defaultOptions) => {
       } else if (input[i] !== mask[maskIndex]) {
         // If not a test case include char at position
         input = putCharAt(input, i, mask[maskIndex])
-        // When starting from right char will be put in i + 1 position 
+        // When starting from right char will be put in i + 1 position
         if (options.startAt === 'right') i = goBack(i)
         // input = input.substring(0, i) + mask[maskIndex] + input.substring(i)
         endInput = updateEndInput(input)
@@ -116,4 +116,4 @@ const mask = (mask :string, options :Options = defaultOptions) => {
   }
 }
 
-export { mask as default }
+export { MaskMe as default }

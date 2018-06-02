@@ -2,7 +2,7 @@
   "name": "mask-me",
   "version": "0.1.0",
   "description": "Framework neutral mask functions",
-  "main": "dist/index.js",
+  "main": "dist/mask.js",
   "scripts": {
     "test": "jest --watch --verbose",
     "lint": "npx standard --fix",

@@ -1,6 +1,6 @@
-import {mask} from '../src'
+import MaskMe from '../src/mask'
 test('date mask', () => {
-  const myMask = mask('00/00/0000')
+  const myMask = MaskMe('00/00/0000')
   expect(myMask('1')).toMatch(/1/) // 1
   expect(myMask('12')).toMatch(/12/) // 12
   expect(myMask('12 ')).toMatch(/12\//) // 12/
@@ -29,7 +29,7 @@ test('date mask', () => {
 })
 
 test('ip mask', () => {
-  const myMask = mask('099.099.099.099')
+  const myMask = MaskMe('099.099.099.099')
   expect(myMask('1 1.1 1 ')).toMatch(/1\.1\.1\.1/) //1.1.1.1
   expect(myMask('1 1.1 1  1231231')).toMatch(/1\.1\.1\.1/) //1.1.1.1
   expect(myMask('1 ')).toMatch(/1\./) //1.
@@ -40,19 +40,19 @@ test('ip mask', () => {
 })
 
 test('date/ip mask', () => {
-  const myMask = mask('00/00/0000')
-  const myMask2 = mask('099.099.099.099')
+  const myMask = MaskMe('00/00/0000')
+  const myMask2 = MaskMe('099.099.099.099')
   expect(myMask('12345678')).toMatch(/^12\/34\/5678$/)
   expect(myMask2('1921680 102330')).toMatch(/^192\.168\.0\.102$/) //192.168.0.102
 })
 
 
 test('money mask', () => {
-  const myMask = mask('#.##0,00', {startAt: 'right'})
+  const myMask = MaskMe('#.##0,00', {startAt: 'right'})
   expect(myMask('00011133344455')).toMatch('000.111.333.444,55')
 })
 
 test('random mask', () => {
-  const myMask = mask('##.#.#.',{startAt:'right'})
+  const myMask = MaskMe('##.#.#.',{startAt:'right'})
   expect(myMask('00000000')).toMatch('00.0.000.0.0.')
 })
