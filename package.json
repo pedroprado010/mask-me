@@ -1,6 +1,6 @@
 {
-  "name": "mask-me",
-  "version": "0.1.0",
+  "name": "@plcsp/mask-me",
+  "version": "0.1.1",
   "description": "Framework neutral mask functions",
   "main": "dist/mask.js",
   "scripts": {

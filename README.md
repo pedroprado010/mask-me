@@ -5,7 +5,7 @@ Framework neutral input masking.
 ### Installing
 
 ```
-npm install --save mask-me
+npm install --save @plcsp/mask-me
 ```
 
 ## Using it
