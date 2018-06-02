@@ -6,7 +6,8 @@
   "scripts": {
     "test": "jest --watch --verbose",
     "lint": "npx standard --fix",
-    "transpile": "npx gulp transpile"
+    "transpile": "npx gulp transpile",
+    "prepublishOnly": "npx gulp transpile"
   },
   "repository": {
     "type": "git",
