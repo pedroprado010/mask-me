@@ -79,6 +79,7 @@ const mask = (mask :string, options :Options = defaultOptions) => {
       } else if (input[i] !== mask[maskIndex]) {
         // If not a test case include char at position
         input = putCharAt(input, i, mask[maskIndex])
+        // When starting from right char will be put in i + 1 position 
         if (options.startAt === 'right') i = goBack(i)
         // input = input.substring(0, i) + mask[maskIndex] + input.substring(i)
         endInput = updateEndInput(input)
