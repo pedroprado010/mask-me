@@ -1,5 +1,7 @@
 # Mask Me
 
+[![Total alerts](https://img.shields.io/lgtm/alerts/g/pedroprado010/mask-me.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/pedroprado010/mask-me/alerts/) [![Language grade: JavaScript](https://img.shields.io/lgtm/grade/javascript/g/pedroprado010/mask-me.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/pedroprado010/mask-me/context:javascript)
+
 Framework neutral input masking.
 
 ### Installing
